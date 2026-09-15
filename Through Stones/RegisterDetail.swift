@@ -36,7 +36,7 @@ struct StyleSheet: View {
     var body: some View {
         let r = entry.style.rules
         return RegisterShell(title: entry.style.name, subtitle: entry.region, onClose: onClose) {
-            SheetCard(padding: 9) { PlateBox(name: entry.facePlate, height: Fell.isPad ? 330 : 224) }
+            SheetCard(padding: 9) { PlateBox(name: entry.facePlate, aspect: 4 / 3) }
             SheetCard {
                 VStack(alignment: .leading, spacing: 9) {
                     HeadRule(text: "History")
@@ -46,7 +46,7 @@ struct StyleSheet: View {
             }
             SheetCard(padding: 9) {
                 VStack(alignment: .leading, spacing: 6) {
-                    PlateBox(name: entry.sectionPlate, height: Fell.isPad ? 330 : 224)
+                    PlateBox(name: entry.sectionPlate, aspect: 4 / 3)
                     Text("The section: what the judge reads").font(Fell.note(12)).foregroundColor(Fell.inkFaint)
                 }
             }
@@ -114,7 +114,7 @@ struct FeatureSheet: View {
 
     var body: some View {
         RegisterShell(title: entry.feature.name, subtitle: nil, onClose: onClose) {
-            SheetCard(padding: 9) { PlateBox(name: entry.plate, height: Fell.isPad ? 330 : 224) }
+            SheetCard(padding: 9) { PlateBox(name: entry.plate, aspect: 4 / 3) }
             SheetCard {
                 VStack(alignment: .leading, spacing: 9) {
                     HeadRule(text: "How it is built")
@@ -151,7 +151,7 @@ struct StoneSheet: View {
         let ages = ["new", "year", "ten", "fifty", "century"]
         let ageWords = ["Newly built", "One winter", "Ten years", "Fifty years", "150 years"]
         return RegisterShell(title: entry.name, subtitle: entry.region, onClose: onClose) {
-            SheetCard(padding: 9) { PlateBox(name: entry.plate, height: Fell.isPad ? 300 : 200) }
+            SheetCard(padding: 9) { PlateBox(name: entry.plate, aspect: 4 / 3) }
             SheetCard {
                 VStack(alignment: .leading, spacing: 9) {
                     HeadRule(text: "The stone", trailing: entry.age)
@@ -188,7 +188,7 @@ struct StoneSheet: View {
             SheetCard {
                 VStack(alignment: .leading, spacing: 9) {
                     HeadRule(text: "Weathering", trailing: ageWords[age])
-                    PlateBox(name: "wx_\(group)_\(ages[age])", height: Fell.isPad ? 300 : 200)
+                    PlateBox(name: "wx_\(group)_\(ages[age])", aspect: 4 / 3)
                     BandPicker(titles: ["New", "1 yr", "10", "50", "150"], index: $age)
                     Text("The field weathers your walls the same way, with the real days since they were built.")
                         .font(Fell.note(12)).foregroundColor(Fell.inkFaint).fixedSize(horizontal: false, vertical: true)
@@ -217,7 +217,7 @@ struct ToolSheet: View {
 
     var body: some View {
         RegisterShell(title: entry.name, subtitle: nil, onClose: onClose) {
-            SheetCard(padding: 9) { PlateBox(name: entry.plate, height: Fell.isPad ? 330 : 224) }
+            SheetCard(padding: 9) { PlateBox(name: entry.plate, aspect: 4 / 3) }
             SheetCard {
                 VStack(alignment: .leading, spacing: 9) {
                     HeadRule(text: "Use")
@@ -240,7 +240,7 @@ struct FaultSheetView: View {
 
     var body: some View {
         RegisterShell(title: entry.kind.name, subtitle: "Costs \(Int(entry.kind.weight)) points each, up to \(Int(entry.kind.cap))", onClose: onClose) {
-            SheetCard(padding: 9) { PlateBox(name: entry.plate, height: Fell.isPad ? 330 : 224) }
+            SheetCard(padding: 9) { PlateBox(name: entry.plate, aspect: 4 / 3) }
             SheetCard {
                 VStack(alignment: .leading, spacing: 9) {
                     HeadRule(text: "What it is")

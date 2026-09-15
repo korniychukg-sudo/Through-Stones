@@ -19,29 +19,41 @@ enum Plates {
 
 struct PlateBox: View {
     let name: String
-    var height: CGFloat
+    var height: CGFloat = 0
     var corner: CGFloat = 4
     var fit: Bool = false
+    var aspect: CGFloat? = nil
 
     var body: some View {
-        Color.clear
-            .overlay(
-                Group {
-                    if let image = Plates.load(name) {
-                        if fit {
-                            Image(uiImage: image).resizable().scaledToFit()
-                        } else {
-                            Image(uiImage: image).resizable().scaledToFill()
-                        }
-                    } else {
-                        Fell.pageDeep
-                    }
+        Group {
+            if let aspect = aspect {
+                Color.clear
+                    .aspectRatio(aspect, contentMode: .fit)
+                    .overlay(picture)
+                    .frame(maxWidth: .infinity)
+            } else {
+                Color.clear
+                    .overlay(picture)
+                    .frame(height: height)
+            }
+        }
+        .clipped()
+        .cornerRadius(corner)
+        .overlay(RoundedRectangle(cornerRadius: corner).stroke(Fell.ink.opacity(0.16), lineWidth: 0.8))
+    }
+
+    private var picture: some View {
+        Group {
+            if let image = Plates.load(name) {
+                if fit {
+                    Image(uiImage: image).resizable().scaledToFit()
+                } else {
+                    Image(uiImage: image).resizable().scaledToFill()
                 }
-            )
-            .frame(height: height)
-            .clipped()
-            .cornerRadius(corner)
-            .overlay(RoundedRectangle(cornerRadius: corner).stroke(Fell.ink.opacity(0.16), lineWidth: 0.8))
+            } else {
+                Fell.pageDeep
+            }
+        }
     }
 }
 

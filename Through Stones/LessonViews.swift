@@ -22,7 +22,7 @@ struct LessonSheet: View {
                 SheetHead(title: lesson.title, subtitle: "Lesson \(current + 1) of \(Lessons.all.count): \(lesson.sub)") { onClose() }
                 ScrollView {
                     Column {
-                        SheetCard(padding: 9) { PlateBox(name: lesson.plate, height: Fell.isPad ? 340 : 226) }
+                        SheetCard(padding: 9) { PlateBox(name: lesson.plate, aspect: 4 / 3) }
                             .id("plate\(current)")
                         SheetCard {
                             VStack(alignment: .leading, spacing: 12) {
@@ -158,7 +158,7 @@ struct TermSheet: View {
                             }
                         }
                         if let plate = termPlate {
-                            SheetCard(padding: 9) { PlateBox(name: plate, height: Fell.isPad ? 300 : 200) }
+                            SheetCard(padding: 9) { PlateBox(name: plate, aspect: 4 / 3) }
                         }
                         if !lessons.isEmpty {
                             SheetCard {

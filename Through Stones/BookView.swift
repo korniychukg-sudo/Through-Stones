@@ -135,7 +135,7 @@ struct BookView: View {
 
     private var examination: some View {
         VStack(spacing: 12) {
-            SheetCard(padding: 9) { PlateBox(name: "ls_2", height: Fell.isPad ? 260 : 170) }
+            SheetCard(padding: 9) { PlateBox(name: "ls_2", aspect: 4 / 3) }
             SheetCard {
                 VStack(alignment: .leading, spacing: 10) {
                     HeadRule(text: "The examination")

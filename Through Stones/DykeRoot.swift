@@ -152,7 +152,7 @@ struct DykeIntro: View {
                 ScrollView {
                     Column {
                         SheetCard(padding: 9) {
-                            PlateBox(name: pages[page].2, height: Fell.isPad ? 320 : 218)
+                            PlateBox(name: pages[page].2, aspect: 4 / 3)
                         }
                         VStack(alignment: .leading, spacing: 9) {
                             Text(pages[page].0).font(Fell.title(22)).foregroundColor(Fell.ink)

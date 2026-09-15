@@ -63,7 +63,7 @@ struct ExamView: View {
     private func question(_ q: ExamQuestion) -> some View {
         VStack(spacing: 12) {
             if let plate = q.plate, Plates.exists(plate) {
-                SheetCard(padding: 9) { PlateBox(name: plate, height: Fell.isPad ? 300 : 190) }
+                SheetCard(padding: 9) { PlateBox(name: plate, aspect: 4 / 3) }
             }
             SheetCard {
                 VStack(alignment: .leading, spacing: 10) {
@@ -114,7 +114,7 @@ struct ExamView: View {
         let pct = right * 100 / total
         let passed = pct >= 70
         return VStack(spacing: 12) {
-            SheetCard(padding: 9) { PlateBox(name: passed ? "dc_gate" : "dc_frame", height: Fell.isPad ? 280 : 180) }
+            SheetCard(padding: 9) { PlateBox(name: passed ? "dc_gate" : "dc_frame", aspect: 4 / 3) }
             SheetCard {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
